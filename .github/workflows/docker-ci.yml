@@ -1,0 +1,31 @@
+name: Docker CI
+
+on:
+  push:
+    branches: ["main", "master"]
+  pull_request:
+    branches: ["main", "master"]
+  workflow_dispatch:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v6
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build Docker image (load to runner)
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          load: true
+          tags: hello-docker:ci
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Run container to test output
+        run: docker run --rm hello-docker:ci
