@@ -1,4 +1,2 @@
 #!/bin/bash
-echo "Hello from my first docker image!"
-
-echo "slight change"
+echo "Hello from version 2 of my Docker image!"
