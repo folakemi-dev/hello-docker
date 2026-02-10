@@ -1,2 +1,7 @@
 #!/bin/bash
-echo "Hello from version 2 of my Docker image!"
+#!/bin/bash
+echo "Hello from a long-running container"
+while true; do
+  sleep 10
+done
+

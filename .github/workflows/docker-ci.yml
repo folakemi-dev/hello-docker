@@ -34,7 +34,7 @@ jobs:
           push: true
           tags: |
             ghcr.io/${{ github.actor }}/hello-docker:latest
-            ghcr.io/${{ github.actor }}/hello-docker:v2
+            ghcr.io/${{ github.actor }}/hello-docker:v3
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
